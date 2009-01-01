@@ -6,7 +6,7 @@ from src.controllers.defineProject import *
 from src.controllers.getProject import *
 from src.controllers.alterProject import *
 
-from desktop.interface import *
+from view.interface import *
 
 from time import sleep
 
@@ -44,7 +44,7 @@ while True:
             'description': str(input('Digite o Resumo: ')).upper(),
             'strongs': str(input('Pontos Fortes: ')).upper(),
             'weaks': str(input('Pontos Fracos: ')).upper(),
-            'oportunities': str(input('Oportunidades: ')).upper(),
+            'opportunities': str(input('Oportunidades: ')).upper(),
             'threads': str(input('Ameaças: ')).upper(),
             'objective': str(input('Objetivo/impacto: ')).upper(),
             'history': str(input('Baseado em história? ')).upper(),
