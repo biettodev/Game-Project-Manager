@@ -74,7 +74,6 @@ class Application:
         self.btnBuscar['command'] = self.searchProject
         self.btnBuscar.pack(side=RIGHT)
         
-        # Input configs
         self.lbldescription = Label(self.container3, text='Resumo', font=self.fonte)
         self.lbldescription.pack(side=LEFT)
         
@@ -160,6 +159,7 @@ class Application:
         )
         self.txtsecgameplay.pack(side=LEFT)
         
+        # Buttons
         self.btnCriar = Button(self.container8, font=self.fonte)
         configButton(
             self.btnCriar,
@@ -183,7 +183,21 @@ class Application:
         
         self.lblmsg = Label(self.container9, text='', font=self.fonte)
         self.lblmsg.pack()
+        
+        self.formInputs = [
+            self.txtdescription,
+            self.txtobjective,
+            self.txthistory,
+            self.txtassets,
+            self.txtanimations,
+            self.txtlevels,
+            self.txtnetwork,
+            self.txtaudio,
+            self.txtmaingameplay,
+            self.txtsecgameplay, 
+        ]   
     
+    # Handle project creation
     def newProject(self):        
         project = {
             'description':self.txtdescription.get(),
@@ -200,18 +214,10 @@ class Application:
         
         self.lblmsg['text'] = createGameProject(project)
         
-        self.txtidproject.delete(0, END)
-        self.txtdescription.delete(0, END)
-        self.txtobjective.delete(0, END)
-        self.txthistory.delete(0, END)
-        self.txtassets.delete(0, END)
-        self.txtanimations.delete(0, END)
-        self.txtlevels.delete(0, END)
-        self.txtnetwork.delete(0, END)
-        self.txtaudio.delete(0, END)
-        self.txtmaingameplay.delete(0, END)
-        self.txtsecgameplay.delete(0, END)
-        
+        for t in self.formInputs:
+            t.delete(0, END)
+    
+    # Handle project update 
     def changeProject(self):
         project = [
             self.txtdescription.get(),
@@ -228,65 +234,26 @@ class Application:
         
         self.lblmsg['text'] = updateGameProject(self.txtidproject.get(), project)
         
-        self.txtidproject.delete(0, END)
-        self.txtdescription.delete(0, END)
-        self.txtobjective.delete(0, END)
-        self.txthistory.delete(0, END)
-        self.txtassets.delete(0, END)
-        self.txtanimations.delete(0, END)
-        self.txtlevels.delete(0, END)
-        self.txtnetwork.delete(0, END)
-        self.txtaudio.delete(0, END)
-        self.txtmaingameplay.delete(0, END)
-        self.txtsecgameplay.delete(0, END)
+        for t in self.formInputs:
+            t.delete(0, END)
     
+    # Handle project exclusion
     def excludeProject(self):
         self.lblmsg['text'] = deleteGameProject(self.txtidproject.get())
         
-        self.txtidproject.delete(0, END)
-        self.txtdescription.delete(0, END)
-        self.txtobjective.delete(0, END)
-        self.txthistory.delete(0, END)
-        self.txtassets.delete(0, END)
-        self.txtanimations.delete(0, END)
+        for t in self.formInputs:
+            t.delete(0, END)
     
+    # Handle project search
     def searchProject(self):  
-        resp = getGameProject(self.txtidproject.get())
+        res = getGameProject(self.txtidproject.get())
         
-        self.lblmsg['text'] = resp[0]
+        self.lblmsg['text'] = res['message']
         
-        self.txtidproject.delete(0, END)
-        self.txtidproject.insert(INSERT, resp[1][0])
-        
-        self.txtdescription.delete(0, END)
-        self.txtdescription.insert(INSERT, resp[1][1])
-        
-        self.txtobjective.delete(0, END)
-        self.txtobjective.insert(INSERT, resp[1][2])
-        
-        self.txthistory.delete(0, END)
-        self.txthistory.insert(INSERT, resp[1][3])
-        
-        self.txtassets.delete(0, END)
-        self.txtassets.insert(INSERT, resp[1][4])
-        
-        self.txtanimations.delete(0, END)
-        self.txtanimations.insert(INSERT, resp[1][5])
-        
-        self.txtlevels.delete(0, END)
-        self.txtlevels.insert(INSERT, resp[1][6])
-        
-        self.txtnetwork.delete(0, END)
-        self.txtnetwork.insert(INSERT, resp[1][7])
-        
-        self.txtaudio.delete(0, END)
-        self.txtaudio.insert(INSERT, resp[1][8])
-        
-        self.txtmaingameplay.delete(0, END)
-        self.txtmaingameplay.insert(INSERT, resp[1][9])
-        
-        self.txtsecgameplay.delete(0, END)
-        self.txtsecgameplay.insert(INSERT, resp[1][10])
+        if res['register'] is not None:
+            for i, t in enumerate(self.formInputs):
+                t.delete(0, END)
+                t.insert(INSERT, res['register'][i])
     
 root = Tk()
 Application(root)
