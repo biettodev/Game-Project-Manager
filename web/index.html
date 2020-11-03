@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+	<title>Modelo de Exercício</title>
+	<link rel="stylesheet" href="style.css"/>
+	<script src="scripts.js"></script>
+	
+  </head>
+  <body>
+	<div id="interface">
+		<nav id="main-menu">
+			<button href="" class="navigation">Novo Documento</button>
+			<a href="" class="navigation">Documentos</a>
+			<a href="" class="navigation">Deslogar</a>
+		</nav>
+		<main>
+			<form>
+				<div id="description-fields">
+					<fieldset>
+						<input 
+							class="description" 
+							type="text" 
+							placeholder="Resumo"
+						/>
+						<input 
+							class="description" 
+							type="text"
+							placeholder="Pontos Fortes"
+						/>
+						<input 
+							class="description" 
+							type="text" 
+							placeholder="Pontos Fracos"
+						/>
+						<input 
+							class="description" 
+							type="text" 
+							placeholder="Oportunidades"
+						/>
+						<input 
+							class="description" 
+							type="text" 
+							placeholder="Ameaças"
+						/>
+						<input 
+							class="description" 
+							type="text" 
+							placeholder="Objetivo/impacto"
+						/>
+						<div class="dialog">
+							<input 
+								class="description" 
+								type="text" 
+								placeholder="Baseado em história?"
+								disabled 
+							/>
+							<button type="button">Sim</button>
+							<button type="button">Não</button>
+						</div>
+						<button onclick="save(event)">
+							Salvar
+						</button>
+					</fieldset>
+					
+				</div>
+				<div id="dinamic-fields">
+					<fieldset>
+						<div class="dinamic">
+							<input 
+								type="text" 
+								placeholder="Assets Fundamentais"
+								disabled 
+							/>
+							<select>
+								
+							</select>
+							<button type="button">+</button>
+						</div>
+						
+						<div class="dinamic">
+							<input
+								type="text" 
+								placeholder="Animações/cinemáticas"
+								disabled 
+							/>
+							<select>
+								
+							</select>
+							<button type="button">+</button>
+						</div>
+						
+						<div class="dinamic">
+							<input
+								type="text" 
+								placeholder="Níveis Fundamentais"
+								disabled 
+							/>
+							<select>
+								
+							</select>
+							<button type="button">+</button>
+						</div>
+						
+						<div class="dinamic">
+							<input
+								type="text" 
+								placeholder="Interfaces"
+								disabled 
+							/>
+							<select>
+								
+							</select>
+							<button type="button">+</button>
+						</div>
+						
+						<div class="dinamic">
+							<input
+								type="text" 
+								placeholder="Paleta de cores Primária"
+								disabled 
+							/>
+							<select>
+								
+							</select>
+							<button type="button">+</button>
+						</div>
+						
+						<div class="dinamic">
+							<input
+								type="text" 
+								placeholder="Paleta de cores Secundária"
+								disabled 
+							/>
+							<select>
+								
+							</select>
+							<button type="button">+</button>
+						</div>
+						
+						<div class="dinamic">
+							<input 
+								type="text" 
+								placeholder="Tempo médio de Sessão"
+								disabled 
+							/>
+							<select>
+								
+							</select>
+							<button type="button">+</button>
+						</div>
+					</fieldset>
+				</div>
+			</form>
+		</main>
+		<footer>
+			<p>&copy: @biettodev</p>
+		</footer>
+	</div>
+	
+  </body>
+</html>

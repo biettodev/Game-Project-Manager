@@ -41,24 +41,24 @@ while True:
         
         # Reading game informations
         project = {
-            'description': str(input('Digite o Resumo: ')),
-            'strongs': str(input('Pontos Fortes: ')),
-            'weaks': str(input('Pontos Fracos: ')),
-            'oportunities': str(input('Oportunidades: ')),
-            'threads': str(input('Ameaças: ')),
-            'objective': str(input('Objetivo/impacto: ')),
-            'history': str(input('Baseado em história? ')),
-            'assets': str(input('Assets Fundamentais: ')),
-            'animations': str(input('Animações/cinemáticas: ')),
-            'levels': str(input('Níveis Fundamentais: ')),
-            'network': str(input('Funcionalidades de Rede? ')),
-            'audio': str(input('Sonoplastia: ')),
-            'main_gameplay': str(input('Jogabilidade Principal: ')),
-            'sec_gameplay': str(input('Mecânicas Secundárias: ')),
-            'interfaces': str(input('Interfaces: ')),
-            'colors1': str(input('Paleta 1: ')),
-            'colors2': str(input('Paleta 2: ')),
-            'session_time': str(input('Tempo Médio de Sessão: '))
+            'description': str(input('Digite o Resumo: ')).upper(),
+            'strongs': str(input('Pontos Fortes: ')).upper(),
+            'weaks': str(input('Pontos Fracos: ')).upper(),
+            'oportunities': str(input('Oportunidades: ')).upper(),
+            'threads': str(input('Ameaças: ')).upper(),
+            'objective': str(input('Objetivo/impacto: ')).upper(),
+            'history': str(input('Baseado em história? ')).upper(),
+            'assets': str(input('Assets Fundamentais: ')).upper(),
+            'animations': str(input('Animações/cinemáticas: ')).upper(),
+            'levels': str(input('Níveis Fundamentais: ')).upper(),
+            'network': str(input('Funcionalidades de Rede? ')).upper(),
+            'audio': str(input('Sonoplastia: ')).upper(),
+            'main_gameplay': str(input('Jogabilidade Principal: ')).upper(),
+            'sec_gameplay': str(input('Mecânicas Secundárias: ')).upper(),
+            'interfaces': str(input('Interfaces: ')).upper(),
+            'colors1': str(input('Paleta 1: ')).upper(),
+            'colors2': str(input('Paleta 2: ')).upper(),
+            'session_time': str(input('Tempo Médio de Sessão: ')).upper()
         }
         createGameProject(project)
         
@@ -74,7 +74,7 @@ while True:
                 for i in range(1, len(gameInfos)):
                     print(f'{i}. {gameDescriptions[i-1]}: {gameInfos[i]}')
                     
-                    updatedInfo = str(input('Mudar para: '))
+                    updatedInfo = str(input('Mudar para: ')).upper()
                     infosToUpdate.append(updatedInfo)
                     
                 updateGameProject(cod, infosToUpdate)

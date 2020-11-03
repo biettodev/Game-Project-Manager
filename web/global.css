@@ -1,0 +1,18 @@
+::root{
+	--primary-color: #8E1DE0;
+	--secondary-color: #07E061;
+	--terciary-color: #580494;
+	--dark-black: #123123;
+}
+
+*{
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	box-sizing: border-box;
+}
+
+body{
+	font-family: 'Arial', sans-serif;
+}
+
