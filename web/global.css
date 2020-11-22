@@ -1,4 +1,4 @@
-::root{
+:root{
 	--primary-color: #8E1DE0;
 	--secondary-color: #07E061;
 	--terciary-color: #580494;
@@ -13,6 +13,18 @@
 }
 
 body{
-	font-family: 'Arial', sans-serif;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-weight: 700;
+	background-color: #E5E5E5;
 }
+
+a, button{
+	font-family: 'Poppins', sans-serif;
+	text-decoration: none;
+} 
+
+h1, h2, h3, h4, h5, h6{
+	font-family: 'Poppins', sans-serif;
+}
+
 

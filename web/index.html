@@ -5,62 +5,81 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
 	<title>Modelo de Exercício</title>
+	<link rel="stylesheet" href="global.css"/>
 	<link rel="stylesheet" href="style.css"/>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Open+Sans+Condensed:wght@300;700&display=swap" rel="stylesheet"/>
 	<script src="scripts.js"></script>
-	
   </head>
   <body>
 	<div id="interface">
 		<nav id="main-menu">
-			<button href="" class="navigation">Novo Documento</button>
-			<a href="" class="navigation">Documentos</a>
-			<a href="" class="navigation">Deslogar</a>
+			<button class="navigation">Novo Documento</button>
+			<a href="#" class="navigation">Documentos</a>
+			<a href="#" class="navigation">Deslogar</a>
 		</nav>
 		<main>
-			<form>
+			<form id="new-doc-form">
 				<div id="description-fields">
 					<fieldset>
-						<input 
-							class="description" 
-							type="text" 
-							placeholder="Resumo"
-						/>
-						<input 
-							class="description" 
-							type="text"
-							placeholder="Pontos Fortes"
-						/>
-						<input 
-							class="description" 
-							type="text" 
-							placeholder="Pontos Fracos"
-						/>
-						<input 
-							class="description" 
-							type="text" 
-							placeholder="Oportunidades"
-						/>
-						<input 
-							class="description" 
-							type="text" 
-							placeholder="Ameaças"
-						/>
-						<input 
-							class="description" 
-							type="text" 
-							placeholder="Objetivo/impacto"
-						/>
-						<div class="dialog">
+						<div class="input-block">
+							<label>Resumo</label>
+							<textarea 
+								class="description" 
+								type="text">
+							</textarea> 
+						</div>
+						
+						<div class="input-block">
+							<label>Pontos Fortes</label>
 							<input 
 								class="description" 
-								type="text" 
-								placeholder="Baseado em história?"
+								type="text"
+							/>
+						</div>
+						
+						<div class="input-block">
+							<label>Pontos Fracos</label>
+							<input 
+								class="description" 
+								type="text"
+							/>
+						</div>
+						
+						<div class="input-block">
+							<label>Oportunidades</label>
+							<input 
+								class="description" 
+								type="text"
+							/>
+						</div>
+						
+						<div class="input-block">
+							<label>Ameaças</label>
+							<input 
+								class="description" 
+								type="text"
+							/>
+						</div>
+						
+						<div class="input-block">
+							<label>Objetivo/impacto</label>
+							<input 
+								class="description" 
+								type="text"
+							/>
+						</div>
+						
+						<div class="dialog">
+							<label>Baseado em história?</label>
+							<input 
+								class="description" 
+								type="text"
 								disabled 
 							/>
 							<button type="button">Sim</button>
 							<button type="button">Não</button>
 						</div>
-						<button onclick="save(event)">
+						<button class="save-new-doc" onclick="save(event)">
 							Salvar
 						</button>
 					</fieldset>
@@ -156,7 +175,7 @@
 			</form>
 		</main>
 		<footer>
-			<p>&copy: @biettodev</p>
+			<p>&copy: <a href="#">@biettodev</a></p>
 		</footer>
 	</div>
 	
