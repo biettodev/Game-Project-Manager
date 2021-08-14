@@ -1,7 +1,7 @@
 from os import path, getcwd
 import sqlite3
 
-dbPath = path.join(f'{getcwd()}','src/database', 'game_projects.db')
+dbPath = path.join(f'{getcwd()}','src/database', 'game_projects.sqlite')
 
 # Handle connection errors
 try:

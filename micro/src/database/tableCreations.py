@@ -8,7 +8,7 @@ try:
             description TEXT NOT NULL,
             strongs TEXT,
             weaks TEXT,
-            oppornities,
+            opportunities TEXT,
             threads TEXT,
             objective TEXT,
             history INTEGER,

@@ -24,13 +24,12 @@ def createGameProject(project):
                 audio,
                 main_gameplay,
                 sec_gameplay,
-                interfaces,
                 colors1,
                 colors2,
                 session_time
             )
             VALUES(
-                ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+                ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
             )
             """
         values = [
@@ -48,7 +47,6 @@ def createGameProject(project):
             project['audio'],
             project['main_gameplay'],
             project['sec_gameplay'],
-            project['interfaces'],
             project['colors1'],
             project['colors2'],
             project['session_time'],
