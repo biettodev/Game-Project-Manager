@@ -10,6 +10,12 @@ from view.interface import *
 
 from time import sleep
 
+def readNumberInput(msg):
+    try:
+        value = int(input(msg))
+    except:
+        print('ERROR 00')
+
 gameDescriptions = [
     'Resumo',
     'Pontos Fortes',
@@ -25,7 +31,6 @@ gameDescriptions = [
     'Sonoplastia',
     'Jogabilidade Principal',
     'Mecânicas Secundárias',
-    'Interfaces',
     'Paleta1',
     'Paleta2',
     'Tempo Médio de Sessão'
@@ -47,15 +52,14 @@ while True:
             'opportunities': str(input('Oportunidades: ')).upper(),
             'threads': str(input('Ameaças: ')).upper(),
             'objective': str(input('Objetivo/impacto: ')).upper(),
-            'history': str(input('Baseado em história? ')).upper(),
+            'history': readNumberInput('Baseado em história? \n 1 - SIM \n 0 - NÃO \n -> '),
             'assets': str(input('Assets Fundamentais: ')).upper(),
             'animations': str(input('Animações/cinemáticas: ')).upper(),
-            'levels': str(input('Níveis Fundamentais: ')).upper(),
-            'network': str(input('Funcionalidades de Rede? ')).upper(),
+            'levels': str(input('Níveis Fundamentais \n 1 - SIM \n 0 - NÃO \n -> ')).upper(),
+            'network': int(input('Funcionalidades de Rede? ')).upper(),
             'audio': str(input('Sonoplastia: ')).upper(),
             'main_gameplay': str(input('Jogabilidade Principal: ')).upper(),
             'sec_gameplay': str(input('Mecânicas Secundárias: ')).upper(),
-            'interfaces': str(input('Interfaces: ')).upper(),
             'colors1': str(input('Paleta 1: ')).upper(),
             'colors2': str(input('Paleta 2: ')).upper(),
             'session_time': str(input('Tempo Médio de Sessão: ')).upper()

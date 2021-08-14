@@ -2,8 +2,8 @@
 # DOCUMENT CREATE AND DELETE #
 ##############################
 
-from src.database.tableCreations import *
-from src.database.connection import *
+from api.database.connection import *
+from api.database.tableCreations import *
  
 # Makes new game project register   
 def createGameProject(project):

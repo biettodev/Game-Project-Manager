@@ -134,22 +134,22 @@ class Application:
         ########
         
         self.btnCriar = Button(self.container8,text='Criar')
-        # configButton(
-            # self.btnCriar,
-            # self.newProject
-        # )
+        configButton(
+            self.btnCriar,
+            self.newProject
+        )
         
         self.btnAlterar = Button(self.container8, text='Alterar')
-        # configButton(
-            # self.btnAlterar,
-            # self.changeProject 
-        # )
+        configButton(
+            self.btnAlterar,
+            self.changeProject 
+        )
         
         self.btnDeletar = Button(self.container8, text='Deletar')
-        # configButton(
-            # self.btnDeletar,
-            # self.excludeProject
-        # )
+        configButton(
+            self.btnDeletar,
+            self.excludeProject
+        )
         
         self.options = [
             self.btnCriar, 
@@ -157,29 +157,29 @@ class Application:
             self.btnDeletar
         ]
         
-        Menu(self.options)
+        # Menu(self.options)
         
-        # Menu([
-            # {
-                # 'button':self.btnCriar, 
-                # 'command':self.newProject
-            # },
-            # {
-                # 'button':self.btnAlterar,
-                # 'command':self.changeProject,
-            # },
-            # {
-                # 'button':self.btnDeletar, 
-                # 'command':self.excludeProject
-            # }
-        # ])
+        Menu([
+            {
+                'button':self.btnCriar, 
+                'command':self.newProject
+            },
+            {
+                'button':self.btnAlterar,
+                'command':self.changeProject,
+            },
+            {
+                'button':self.btnDeletar, 
+                'command':self.excludeProject
+            }
+        ])
         
         self.lblmsg = Label(self.container9, text='', font=self.font)
         self.lblmsg.pack()
     
-    ###########
-    # Handles #
-    ###########
+    ############
+    # Handlers #
+    ############
     
     def newProject(self):        
         project = {
@@ -236,5 +236,6 @@ class Application:
                 t.insert(INSERT, res['register'][i])
     
 root = Tk()
+
 Application(root)
 root.mainloop()

@@ -4,8 +4,8 @@
 
 from desktop.interface import *
 
-from src.database.tableCreations import *
 from src.database.connection import *
+from src.database.tableCreations import *
 
 # List all registers from database
 def getGameProjects():
