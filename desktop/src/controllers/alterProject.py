@@ -29,6 +29,10 @@ def updateGameProject(game_cod, newInfos):
             UPDATE game_projects
             SET description  = ?,
                 objective = ?,
+                strongs = ?,
+                weaks = ?,
+                oportunities = ?,
+                threads = ?,
                 history = ?,
                 assets = ?,
                 animations = ?,
@@ -36,7 +40,10 @@ def updateGameProject(game_cod, newInfos):
                 network = ?,
                 audio = ?,
                 main_gameplay = ?,
-                sec_gameplay = ?
+                sec_gameplay = ?,
+                colors1 = ?,
+                colors2 = ?,
+                session_time = ?
             WHERE game_cod = {}
     """.format(game_cod) 
     try:

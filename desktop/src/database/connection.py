@@ -5,7 +5,7 @@ dbPath = path.join(f'{getcwd()}','src/database', 'game_projects.db')
 
 # Handle connection errors
 try:
-    conn = sqlite3.connect(dbPath)
+    conn = sqlite3.connect('game_projects.db')
 except:
     print('Não foi possível conectar ao Banco de Dados.')
 else:

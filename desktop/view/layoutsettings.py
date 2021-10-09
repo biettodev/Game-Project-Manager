@@ -1,4 +1,4 @@
-import tkinter
+import remi.gui as gui
 
 from view.widgetConfigs import *
 
@@ -20,6 +20,4 @@ def Header(label, input, button, command):
 def Menu(buttons):
     for i in range(len(buttons)):
         print(i)
-        # print(key.text)
-        # configButton(buttons[i], print('Olá'))
     

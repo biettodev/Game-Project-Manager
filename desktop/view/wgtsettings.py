@@ -1,4 +1,4 @@
-from tkinter import *
+import remi.gui as gui
 
 def configContainer(container, padx, pady):
     container['padx'] = padx

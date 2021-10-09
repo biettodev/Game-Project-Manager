@@ -25,8 +25,7 @@ def getGameProject(game_cod):
         """.format(game_cod)
         
         result = cursor.execute(sql_select)
-
     except:
-        return 'Não foi possível abrir este documento!'
+        return 0
     else:
         return {'message':'Busca feita com sucesso.', 'register':result.fetchone()}

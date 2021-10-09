@@ -2,204 +2,157 @@ from src.controllers.defineProject import *
 from src.controllers.getProject import *
 from src.controllers.alterProject import *
 
-from view.widgetConfigs import *
-from view.uiSettings import Layout, Header, Form, Menu
+# from view.wgtsettings import *
+# from view.layoutsettings import Layout, Header, Form
 
-from tkinter import * 
+import remi.gui as gui
+from remi import start, App
 
-class Application:
-    def __init__(self, master=None):
-        self.font = ('Verdana', '8')
-        
-        # Containers configs
-        self.container1 = Frame(master)
-        self.container2 = Frame(master)
-        self.container3 = Frame(master)
-        self.container4 = Frame(master)
-        self.container5 = Frame(master)
-        self.container6 = Frame(master)
-        self.container7 = Frame(master)
-        self.container8 = Frame(master)
-        self.container9 = Frame(master)
-        
-        containers = [
-            self.container1,
-            self.container2,
-            self.container3,
-            self.container4,
-            self.container5,
-            self.container6,
-            self.container7,
-            self.container8,
-            self.container9,
-        ]
-        
-        Layout(containers)
-        
+
+class Application(App):
+    def __init__(self, *args):
+        super(Application, self).__init__(*args)
+
+    def main(self):
+
+        # the margin 0px auto centers the main container
+        verticalContainer = gui.Container(width=1040, margin='170px auto',
+        style={
+            'display': 'block',
+            'overflow': 'hidden',
+            'border-radius': '20px',
+            'padding': '20px'
+            }
+        )
+
+        horizontalContainer = gui.Container(width='100%', layout_orientation=gui.Container.LAYOUT_HORIZONTAL, margin='0px',
+        style={
+            'display': 'block',
+            'overflow': 'auto'
+            }
+        )
+
         ##########
         # Header #
         ##########
-        
-        self.titulo = Label(self.container1, text='Informe os dados', font='Arial')
-        self.titulo['font'] = ('Calibri', '9', 'bold')
-        self.titulo.pack()
-        
-        self.lblidproject = Label(self.container2, text='ID Projeto:')
-        
-        self.txtidproject = Entry(self.container2)
-        
-        self.btnBuscar = Button(self.container2, text='Buscar')
-        
-        Header(
-            self.lblidproject, 
-            self.txtidproject, 
-            self.btnBuscar, self.searchProject
+
+        self.lbTitle = gui.Label(text='Game Project Manager',
+        style={
+            'text-align': 'center',
+            'margin': '20px 0',
+            'font-size': '20px'
+            }
         )
-        
-        ########
-        # Form #
-        ########
-        
-        self.lbldescription = Label(self.container3, text='Resumo')
-        
-        self.txtdescription = Entry(self.container3)
-        
-        self.lblobjective = Label(self.container4, text='Objetivo')
-        
-        self.txtobjective = Entry(self.container4)
-        
-        self.lblhistory = Label(self.container5, text='História')
-        
-        self.txthistory = Entry(self.container5)
-        
-        self.lblassets = Label(self.container6, text='Assets Fundamentais')
-        
-        self.txtassets = Entry(self.container6)
-        
-        self.lblanimations = Label(self.container7, text='Animações/cinemáticas')
-        
-        self.txtanimations = Entry(self.container7)
-        
-        self.lbllevels = Label(self.container3, text='Níveis Fundamentais', font=self.font)
-        
-        self.txtlevels = Entry(self.container3)
-        
-        self.lblnetwork = Label(self.container4, text='Baseado em rede?', font=self.font)
-        
-        self.txtnetwork = Entry(self.container4)
-        
-        self.lblaudio = Label(self.container5, text='Música')
-        
-        self.txtaudio = Entry(self.container5)
-        
-        self.lblmaingameplay = Label(self.container6, text='Jogabilidade Principal', font=self.font)
-        
-        self.txtmaingameplay = Entry(self.container6)
-        
-        self.lblsecgameplay = Label(self.container7, text='Mecânicas Secundárias')
-        
-        self.txtsecgameplay = Entry(self.container7)
-        
-        self.formLabels = [
-                self.lbldescription,
-                self.lblobjective,
-                self.lblhistory,
-                self.lblassets,
-                self.lblanimations,
-                self.lbllevels,
-                self.lblnetwork,
-                self.lblaudio,
-                self.lblmaingameplay,
-                self.lblsecgameplay
-                
-            ]
-        
-        self.formInputs = [
-            self.txtdescription,
-            self.txtobjective,
-            self.txthistory,
-            self.txtassets,
-            self.txtanimations,
-            self.txtlevels,
-            self.txtnetwork,
-            self.txtaudio,
-            self.txtmaingameplay,
-            self.txtsecgameplay, 
-        ] 
-        
-        Form(self.formLabels, self.formInputs)
-        
+
         ########
         # Menu #
         ########
-        
-        self.btnCriar = Button(self.container8,text='Criar')
-        configButton(
-            self.btnCriar,
-            self.newProject
-        )
-        
-        self.btnAlterar = Button(self.container8, text='Alterar')
-        configButton(
-            self.btnAlterar,
-            self.changeProject 
-        )
-        
-        self.btnDeletar = Button(self.container8, text='Deletar')
-        configButton(
-            self.btnDeletar,
-            self.excludeProject
-        )
-        
-        self.options = [
-            self.btnCriar, 
-            self.btnAlterar, 
-            self.btnDeletar
-        ]
-        
-        # Menu(self.options)
-        
-        Menu([
-            {
-                'button':self.btnCriar, 
-                'command':self.newProject
-            },
-            {
-                'button':self.btnAlterar,
-                'command':self.changeProject,
-            },
-            {
-                'button':self.btnDeletar, 
-                'command':self.excludeProject
+
+        menu = gui.Menu(width='100%', height='30px')
+
+        m1 = gui.MenuItem('Criar', width=100, height=30,
+                          style={'background': '#8E1DE0'})
+        m2 = gui.MenuItem('Alterar', width=100, height=30)
+        m3 = gui.MenuItem('Deletar', width=100, height=30)
+        self.projectid = gui.TextInput(width=100, height=30, 
+        style={
+            'color': 'black',
             }
-        ])
+        )
         
-        self.lblmsg = Label(self.container9, text='', font=self.font)
-        self.lblmsg.pack()
-    
+        self.m5 = gui.MenuItem('Buscar', width=100, height=30)
+        self.m5.onclick.do(self.searchProject())
+
+        menu.append([m1, m2, m3, self.projectid, self.m5])
+
+        menubar = gui.MenuBar(width='100%', height='30px')
+
+        menubar.append(menu)
+
+        ########
+        # Form #
+        ########
+
+        self.txtDescription = gui.TextInput(style={
+            'padding': '10px',
+            'color': '#580494',
+        })
+        self.txtDescription.set_text('Resumo')
+        
+        self.txtObjective = gui.TextInput()
+        self.txtStrongs = gui.TextInput()
+        self.txtWeaks = gui.TextInput()
+        self.txtOportunities = gui.TextInput()
+        self.txtThreads = gui.TextInput()
+        self.txtHistory = gui.TextInput()
+        self.txtAssets = gui.TextInput()
+        self.txtAnimations = gui.TextInput()
+        self.txtLevels = gui.TextInput()
+        self.txtNetwork = gui.TextInput()
+        self.txtAudio = gui.TextInput()
+        self.txtMainGameplay = gui.TextInput()
+        self.txtSecGameplay = gui.TextInput()
+        self.txtColors1 = gui.TextInput()
+        self.txtColors2 = gui.TextInput()
+        self.txtSessionTime = gui.TextInput()
+
+        self.formInputs = [
+            self.txtDescription,
+            self.txtObjective,
+            self.txtStrongs,
+            self.txtWeaks,
+            self.txtOportunities,
+            self.txtThreads,
+            self.txtHistory,
+            self.txtAssets,
+            self.txtAnimations,
+            self.txtLevels,
+            self.txtNetwork,
+            self.txtAudio,
+            self.txtMainGameplay,
+            self.txtSecGameplay,
+            self.txtColors1,
+            self.txtColors2,
+            self.txtSessionTime,
+        ]
+
+        horizontalContainer.append([self.inputs])
+
+        verticalContainer.append([self.lbTitle, menubar, horizontalContainer])
+
+        # returning the root widget
+        return verticalContainer
+
     ############
     # Handlers #
     ############
-    
-    def newProject(self):        
+
+    def newProject(self):
         project = {
-            'description':self.txtdescription.get(),
-            'objective':self.txtobjective.get(),
-            'history':self.txthistory.get(),
-            'assets':self.txtassets.get(),
-            'animations':self.txtanimations.get(),
-            'levels':self.txtlevels.get(),
-            'network':self.txtnetwork.get(),
-            'audio':self.txtaudio.get(),
-            'main_gameplay':self.txtmaingameplay.get(),
-            'sec_gameplay':self.txtsecgameplay.get(),
+            'description': self.txtDescription.get_text(),
+            'objective': self.txtObjective.get_text(),
+            'strongs': self.txtStrongs.get_text(),
+            'weaks': self.txtWeaks.get_text(),
+            'oportunities': self.txtOportunities.get_text(),
+            'threads': self.txtThreads.get_text(),
+            'history': self.txtHistory.get_text(),
+            'assets': self.txtAssets.get_text(),
+            'animations': self.txtAnimations.get_text(),
+            'levels': self.txtLevels.get_text(),
+            'network': self.txtNetwork.get_text(),
+            'audio': self.txtAudio.get_text(),
+            'main_gameplay': self.txtMainGameplay.get_text(),
+            'sec_gameplay': self.txtSecGameplay.get_text(),
+            'colors1': self.txtColors1.get_text(),
+            'colors2': self.txtColors2.get_text(),
+            'session_time': self.txtSessionTime.get_text(),
         }
-        
+
         self.lblmsg['text'] = createGameProject(project)
-        
+
         for t in self.formInputs:
             t.delete(0, END)
-    
+
     def changeProject(self):
         project = [
             self.txtdescription.get(),
@@ -213,29 +166,32 @@ class Application:
             self.txtmaingameplay.get(),
             self.txtsecgameplay.get(),
         ]
-        
-        self.lblmsg['text'] = updateGameProject(self.txtidproject.get(), project)
-        
-        for t in self.formInputs:
-            t.delete(0, END)
-            
-    def excludeProject(self):
-        self.lblmsg['text'] = deleteGameProject(self.txtidproject.get())
-        
-        for t in self.formInputs:
-            t.delete(0, END)
-    
-    def searchProject(self):  
-        res = getGameProject(self.txtidproject.get())
-        
-        self.lblmsg['text'] = res['message']
-        
-        if res['register'] is not None:
-            for i, t in enumerate(self.formInputs):
-                t.delete(0, END)
-                t.insert(INSERT, res['register'][i])
-    
-root = Tk()
 
-Application(root)
-root.mainloop()
+        self.lblmsg['text'] = updateGameProject(
+            self.txtidproject.get(), project)
+
+        for t in self.formInputs:
+            t.delete(0, END)
+
+    def excludeProject(self):
+        self.lblmsg['text']=deleteGameProject(self.txtidproject.get())
+
+        for t in self.formInputs:
+            t.delete(0, END)
+
+    def searchProject(self):
+        result=getGameProject(self.projectid.get_value())
+        
+        if result != 0:
+            self.lbTitle.set_text(f"{result['message']}")
+
+            for i, t in enumerate(self.formInputs):
+                t.set_text('')
+                t.set_text(result['register'][i])
+
+        self.lbTitle.set_text('Dados não encontrados')
+
+        
+
+
+start(Application)

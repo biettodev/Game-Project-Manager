@@ -19,7 +19,6 @@ try:
             audio TEXT,
             main_gameplay TEXT,
             sec_gameplay TEXT,
-            interfaces TEXT,
             colors1 TEXT,
             colors2 TEXT,
             session_time TEXT
